@@ -18,9 +18,9 @@ npm ci
 ## ローカルで動かしてみる
 ```shell
 # 必要なパラメータを環境変数にセット
-export MEMBERSHIP_ID="コラボレーションのメンバーシップID"
-export ANALYSIS_TEMPLATE_ARN="実行する分析テンプレートのARN"
-export PARAMETERS='実行する分析テンプレートのパラメータ(JSON形式)' # ex)'{"param1": "value1", "param2": "value2"}'
+export MEMBERSHIP_ID="CleanRoomsコラボレーションのメンバーシップID"
+export ANALYSIS_TEMPLATE_ARN="実行するCleanRooms分析テンプレートのARN"
+export PARAMETERS='（任意）実行するCleanRooms分析テンプレートのパラメータ(JSON形式)' # ex)'{"param1": "value1", "param2": "value2"}'
 export RESULT_OUTPUT_S3_BUCKET="クエリ結果出力先S3バケット名"
 export RESULT_OUTPUT_S3_KEY_PREFIX="クエリ結果出力先S3バケットPrefix"
 
@@ -48,7 +48,7 @@ Lamda関数からCleanRoomsのクエリを実行するためのロールを作�
 }
 ```
 #### 許可ポリシー
-Resourceは必要に応じて適宜絞る
+Resourceは適宜絞る
 ```json
 {
   "Version": "2012-10-17",
@@ -92,12 +92,12 @@ zip -r node_modules.zip node_modules
 ```
 ### LambdaのLayerを登録
 作成したnode_modules.zipをLambdaのLayerとしてアップロードして登録  
-https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/layers  
+https://console.aws.amazon.com/lambda/home#/layers  
 - 名前: 任意の名前（例: aws-sdk-clean-rooms）
 - 互換性のあるランタイム: Node.js 20.x
 
 ### Lambda関数を作成
-https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/create/function  
+https://console.aws.amazon.com/lambda/home#/create/function  
 - 一から作成を選択
 - 関数名: 任意の名前
 - ランタイム: Node.js 20.x
@@ -110,9 +110,9 @@ https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#
 ### パラメータ
 - 環境変数でLambda関数に必要なパラメータを与える  
   - 設定 -> 環境変数 -> 編集 で以下の環境変数を設定する
-    - `MEMBERSHIP_ID`: コラボレーションのメンバーシップID
-    - `ANALYSIS_TEMPLATE_ARN`: 実行する分析テンプレートのARN
-    - `PARAMETERS`: 実行する分析テンプレートのパラメータ(JSON形式)  
+    - `MEMBERSHIP_ID`: CleanRoomsコラボレーションのメンバーシップID
+    - `ANALYSIS_TEMPLATE_ARN`: 実行するCleanRooms分析テンプレートのARN
+    - `PARAMETERS`: （任意）実行するCleanRooms分析テンプレートのパラメータ(JSON形式)  
       例) `{"param1": "value1", "param2": "value2"}`
     - `RESULT_OUTPUT_S3_BUCKET`: クエリ結果出力先S3バケット名
     - `RESULT_OUTPUT_S3_KEY_PREFIX`: クエリ結果出力先S3バケットPrefix
