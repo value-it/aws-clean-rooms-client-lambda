@@ -1,0 +1,8 @@
+{
+  "name": "clean-rooms-client-js",
+  "version": "1.0.0",
+  "dependencies": {
+    "@aws-sdk/client-cleanrooms": "^3.450.0"
+  },
+  "type": "module"
+}
