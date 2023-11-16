@@ -86,12 +86,12 @@ Resourceは必要に応じて適宜絞る
 
 ### node_modulesをzip圧縮
 LambdaのLayerとして登録するためZIPで圧縮  
-※予め `npm install` してnode_modulesができている前提
+※予め `npm ci` してnode_modulesができている前提
 ```shell
 zip -r node_modules.zip node_modules
 ```
 ### LambdaのLayerを登録
-作成したnode_modules.zipをLambdaのLayerとして登録する  
+作成したnode_modules.zipをLambdaのLayerとしてアップロードして登録  
 https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/layers  
 - 名前: 任意の名前（例: aws-sdk-clean-rooms）
 - 互換性のあるランタイム: Node.js 20.x
